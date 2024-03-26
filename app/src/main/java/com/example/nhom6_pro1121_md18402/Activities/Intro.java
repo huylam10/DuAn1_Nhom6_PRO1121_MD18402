@@ -1,4 +1,4 @@
-package Activities;
+package com.example.nhom6_pro1121_md18402.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -24,7 +24,7 @@ public class Intro extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), Login.class));
             }
         };
         countDownTimer.start();
