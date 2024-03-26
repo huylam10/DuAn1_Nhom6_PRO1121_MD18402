@@ -1,9 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="Activities.Login">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".Activities.Login">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/logo"
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:startIconDrawable="@drawable/ic_email"
+        android:hint="Email"
+        android:id="@+id/Login_Til_Name"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_sdt"
+            android:text="KH1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:padding="10dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Mật khẩu"
+        app:counterEnabled="true"
+        android:id="@+id/Login_Til_Pass"
+        app:counterMaxLength="50"
+        app:startIconDrawable="@drawable/lock_24"
+        app:passwordToggleEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_pass"
+            android:text="KH1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+            android:padding="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/btn_background_orange"
+        android:padding="16dp"
+        android:text="Đăng nhập"
+        android:textSize="12dp"
+        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessLeaf">
+
+        <TextView
+            android:id="@+id/signUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/taoTK"
+            android:textColor="#494949"
+            android:layout_weight="1"
+            tools:ignore="HardcodedText,InefficientWeight" />
+        <TextView
+            android:id="@+id/forGot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quenMK"
+            android:textColor="#494949"
+            tools:ignore="HardcodedText,InefficientWeight" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/logo_gg"
+            android:text="Đăng nhập bằng Google"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:drawablePadding="5dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_background_orange"
+            tools:ignore="HardcodedText,RtlHardcoded,UseCompatTextViewDrawableXml" />
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:drawableLeft="@drawable/logo_fb"
+            android:text="Đăng nhập bằng Facebook"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:drawablePadding="5dp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_background_orange"
+            tools:ignore="HardcodedText,RtlHardcoded,UseCompatTextViewDrawableXml" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Bỏ qua đăng nhập"
+        android:textColor="#D10F0F"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
