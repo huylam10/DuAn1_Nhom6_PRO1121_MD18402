@@ -2,4 +2,6 @@
     <string name="app_name">Nhom6_PRO1121_MD18402</string>
     <string name="taoTK"><u>Tạo tài khoản mới</u></string>
     <string name="quenMK"><u>Quên mật khẩu?</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
