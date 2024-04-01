@@ -17,18 +17,18 @@ import java.util.List;
 
 public class TaikhoanDAO {
     SQLiteDatabase db;
-    Dbhelper safetyFoodDataBase;
+    Dbhelper dbhelper;
     SharedPreferences sharedPreferences;
 
     public TaikhoanDAO(Context context) {
-        safetyFoodDataBase = new Dbhelper(context);
-        db = safetyFoodDataBase.getWritableDatabase();
+        dbhelper = new Dbhelper(context);
+        db = dbhelper.getWritableDatabase();
         sharedPreferences = context.getSharedPreferences("OKLuon",MODE_PRIVATE);
     }
 
     public ArrayList<TaiKhoan> getDSNV() {
         ArrayList<TaiKhoan> list = new ArrayList<>();
-        SQLiteDatabase sqLiteDatabase = safetyFoodDataBase.getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = dbhelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM TaiKhoan where Roled=2", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
@@ -41,7 +41,7 @@ public class TaikhoanDAO {
 
     public List<TaiKhoan> getAllTaikhoan(String sql, String... select) {
         List<TaiKhoan> list = new ArrayList<>();
-        db = safetyFoodDataBase.getReadableDatabase();
+        db = dbhelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, select);
         cursor.moveToFirst();
         while (cursor.isAfterLast() == false) {
@@ -62,7 +62,7 @@ public class TaikhoanDAO {
     }
 
     public boolean insertTaikhoan(TaiKhoan taiKhoan) {
-        db = safetyFoodDataBase.getWritableDatabase();
+        db = dbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("UserName", taiKhoan.getUsername());
         values.put("Password", taiKhoan.getPassword());
@@ -71,18 +71,8 @@ public class TaikhoanDAO {
         return row > 0;
     }
 
-    //    public boolean updateTaikhoan(TaiKhoan taiKhoan){
-//        db = safetyFoodDataBase.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put("Id",taiKhoan.getId());
-//        values.put("UserName",taiKhoan.getUsername());
-//        values.put("Password",taiKhoan.getPassword());
-//        values.put("Roled",taiKhoan.getRole());
-//        int row = db.update("TaiKhoan",values,"Id=?",new String[]{taiKhoan.getId()+""});
-//        return row >0;
-//    }
     public boolean thayDoiLoaiSach(TaiKhoan taiKhoan) {
-        SQLiteDatabase sqLiteDatabase = safetyFoodDataBase.getWritableDatabase();
+        SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("UserName", taiKhoan.getUsername());
         contentValues.put("Password", taiKhoan.getPassword());
@@ -94,7 +84,7 @@ public class TaikhoanDAO {
     }
 
     public int deleteTaikhoan(String id) {
-        db = safetyFoodDataBase.getWritableDatabase();
+        db = dbhelper.getWritableDatabase();
         int row = db.delete("TaiKhoan", "Id=?", new String[]{id});
         return row;
     }
@@ -119,7 +109,7 @@ public class TaikhoanDAO {
     }
 
     public boolean checkDangNhapkh(String UserName, String Password) {
-        SQLiteDatabase sqLiteDatabase = safetyFoodDataBase.getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = dbhelper.getReadableDatabase();
 
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT tk.Id, tk.UserName,tk.Password,tk.Roled,tt.FullName,tt.Avatar FROM TaiKhoan tk , ThongTinNguoiDung tt  WHERE tk.Id = tt.AccountId AND UserName = ? AND Password = ? AND Roled = 3 ", new String[]{UserName, Password});
         if (cursor.getCount() != 0) {
@@ -140,7 +130,7 @@ public class TaikhoanDAO {
     }
 
     public boolean checkDangNhapkhNVAD(String UserName, String Password) {
-        SQLiteDatabase sqLiteDatabase = safetyFoodDataBase.getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = dbhelper.getReadableDatabase();
         TaiKhoan taiKhoan;
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM TaiKhoan   WHERE   UserName = ? AND Password = ? AND Roled != 3 ", new String[]{UserName, Password});
         if (cursor.getCount() != 0) {
@@ -159,7 +149,7 @@ public class TaikhoanDAO {
         }
     }
     public int capNhapMatKhau(String username,String oldPass,String newPass){
-        db = safetyFoodDataBase.getWritableDatabase();
+        db = dbhelper.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("SELECT * FROM TaiKhoan WHERE Id =? AND Password =?",new String[]{username,oldPass});
         if (cursor.getCount()>0){
@@ -175,7 +165,7 @@ public class TaikhoanDAO {
     }
 
     public String ForgotPassword(String username){
-        SQLiteDatabase sqLiteDatabase = safetyFoodDataBase.getReadableDatabase();
+        SQLiteDatabase sqLiteDatabase = dbhelper.getReadableDatabase();
         Cursor cursor = sqLiteDatabase.rawQuery("SELECT Password FROM TAIKHOAN WHERE UserName =?",new String[]{username});
         if (cursor.getCount() > 0){
             cursor.moveToFirst();

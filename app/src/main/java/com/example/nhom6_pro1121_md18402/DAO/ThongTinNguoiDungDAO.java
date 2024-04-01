@@ -15,13 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThongTinNguoiDungDAO {
-    Dbhelper safetyFoodDataBase;
+    Dbhelper dbhelper;
     SQLiteDatabase db;
     SharedPreferences sharedPreferences;
 
     public ThongTinNguoiDungDAO(Context context) {
-        safetyFoodDataBase = new Dbhelper(context);
-        db = safetyFoodDataBase.getReadableDatabase();
+        dbhelper = new Dbhelper(context);
+        db = dbhelper.getReadableDatabase();
         sharedPreferences = context.getSharedPreferences("OKLuon",MODE_PRIVATE);
 
     }

@@ -26,7 +26,7 @@
         app:startIconDrawable="@drawable/ic_email"
         android:hint="Email"
         android:id="@+id/Login_Til_Name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_sdt"
@@ -46,8 +46,7 @@
         android:id="@+id/Login_Til_Pass"
         app:counterMaxLength="50"
         app:startIconDrawable="@drawable/lock_24"
-        app:passwordToggleEnabled="true"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_pass"
@@ -58,17 +57,16 @@
             android:padding="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/btn_background_orange"
-        android:padding="16dp"
-        android:text="Đăng nhập"
-        android:textSize="12dp"
-        android:textColor="@color/white" />
+<Button
+    android:id="@+id/btn_login"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/btn_background_orange"
+    android:text="Đăng nhập"
+    android:textColor="@color/white"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
