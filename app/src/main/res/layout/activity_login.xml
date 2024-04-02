@@ -23,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        app:startIconDrawable="@drawable/ic_email"
-        android:hint="Email"
+        app:startIconDrawable="@drawable/user_24"
+        android:hint="Tài khoản "
         android:id="@+id/Login_Til_Name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 

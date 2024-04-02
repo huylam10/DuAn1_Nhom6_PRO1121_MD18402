@@ -18,10 +18,10 @@
             android:name=".Activities.BadgeCart"
             android:exported="false" />
         <activity
-            android:name=".SanPhamDetail"
+            android:name=".Activities.SanPhamDetail"
             android:exported="false" />
         <activity
-            android:name=".OrderDetail"
+            android:name=".Activities.OrderDetail"
             android:exported="false" />
         <activity
             android:name=".Activities.Intro"
@@ -36,13 +36,13 @@
             android:name=".Activities.Sign_up"
             android:exported="false" />
         <activity
-            android:name=".Activities.Login"
+            android:name=".Admin.AdminActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Admin.AdminActivity"
+            android:name=".Activities.Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
