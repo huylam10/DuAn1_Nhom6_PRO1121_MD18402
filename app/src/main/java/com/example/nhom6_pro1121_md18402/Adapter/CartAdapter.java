@@ -34,13 +34,17 @@ import java.text.DecimalFormat;
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartAdapterHolder> {
+
     List<ChiTietDatHang> list;
     SanPhamDAO sanPhamDAO;
     Context context;
     ChiTietDatHangDAO chiTietDatHangDAO;
     int type;
 
+    public CartAdapter(List<ChiTietDatHang> list, Context context, ChiTietDatHangDAO chiTietDatHangDAO, int type) {
+
     public CartAdapter(List<ChiTietDatHang> list, Context context, ChiTietDatHangDAO chiTietDatHangDAO,int type) {
+
         this.list = list;
         this.context = context;
         sanPhamDAO = new SanPhamDAO(context);

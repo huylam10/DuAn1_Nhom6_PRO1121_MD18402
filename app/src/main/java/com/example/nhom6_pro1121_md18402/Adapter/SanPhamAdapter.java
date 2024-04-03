@@ -14,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.example.nhom6_pro1121_md18402.Activities.SanPhamDetail;
 import com.example.nhom6_pro1121_md18402.MODEL.SanPham;
 import com.example.nhom6_pro1121_md18402.R;
@@ -89,3 +90,4 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamA
         }
     }
 }
+

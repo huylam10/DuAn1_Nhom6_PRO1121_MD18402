@@ -44,6 +44,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SanPhamDetail extends AppCompatActivity {
+
+
+    Toolbar SPDetail_toolbar;
+    ImageView SPDetail_Img;
+    TextView SPDetail_Ten, SPDetail_Gia, SpDetail_Created, SPDetail_Status, sizeCart;
+
     Toolbar SPDetail_toolbar;
     ImageView SPDetail_Img;
     TextView SPDetail_Ten, SPDetail_Gia, SpDetail_Created, SPDetail_Status,sizeCart;
@@ -52,6 +58,7 @@ public class SanPhamDetail extends AppCompatActivity {
     RecyclerView SPDetail_List_Tuong_Tu, SPDetail_List_Goi_Y;
     List<SanPham> sanPhamListTT, sanPhamListGY;
     SanPhamDAO sanPhamDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,7 +92,10 @@ public class SanPhamDetail extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         getDataList(sanPham);
         SPDetail_List_Tuong_Tu.setLayoutManager(linearLayoutManager);
+        SanPhamAdapter adapterTT = new SanPhamAdapter(sanPhamListTT, getApplicationContext(), 1);
+
         SanPhamAdapter adapterTT = new SanPhamAdapter(sanPhamListTT, getApplicationContext(),1);
+
 
         SPDetail_List_Tuong_Tu.setAdapter(adapterTT);
     }
@@ -164,9 +174,15 @@ public class SanPhamDetail extends AppCompatActivity {
     }
 
     private void setData(SanPham sanPham) {
+
+        try {
+            SPDetail_Img.setImageResource(Integer.parseInt(sanPham.getImgSanpham()));
+        } catch (Exception e) {
+
         try{
             SPDetail_Img.setImageResource(Integer.parseInt(sanPham.getImgSanpham()));
         }catch (Exception e){
+
             Uri uri = Uri.parse(sanPham.getImgSanpham());
             SPDetail_Img.setImageURI(uri);
         }
@@ -185,8 +201,12 @@ public class SanPhamDetail extends AppCompatActivity {
         }
     }
 
+    private void setCartSize() {
+        sizeCart.setText(String.valueOf(dao.getSum(cart_all.getId())));
+
     private void setCartSize(){
         sizeCart.setText(String.valueOf(dao.getSum(cart_all.getId( ))));
+
     }
 
     private void anhXa() {
@@ -202,15 +222,25 @@ public class SanPhamDetail extends AppCompatActivity {
         dao = new ChiTietDatHangDAO(getApplicationContext());
         sanPhamDAO = new SanPhamDAO(getApplicationContext());
         IntentFilter intentFilter = new IntentFilter("CheckSizeCart");
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter);
+
         LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,intentFilter);
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.home) {
+            onBackPressed();
+        }else {
+
         int id = item.getItemId();
         if (id == android.R.id.home) {
             onBackPressed();
         } else if (id == R.id.badge_cart) {
+
             startActivity(new Intent(SanPhamDetail.this, BadgeCart.class));
         }
         return super.onOptionsItemSelected(item);
@@ -218,10 +248,17 @@ public class SanPhamDetail extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.badge_cart_menu, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.badge_cart);
+        if (account_all.getRole() != 3) {
+
         getMenuInflater().inflate(R.menu.badge_cart_menu,menu);
 
         MenuItem menuItem = menu.findItem(R.id.badge_cart);
         if (account_all.getRole()!=3){
+
             menuItem.setVisible(false);
         }
         View actionMenu = menuItem.getActionView();
@@ -236,7 +273,11 @@ public class SanPhamDetail extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+
     BroadcastReceiver broadcastReceiver = new BroadcastReceiver( ) {
+
         @Override
         public void onReceive(Context context, Intent intent) {
             setCartSize();
@@ -245,9 +286,18 @@ public class SanPhamDetail extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+
+        super.onResume();
+        if (sizeCart != null) {
+            setCartSize();
+        }
+    }
+}
+
         super.onResume( );
         if (sizeCart!=null){
             setCartSize();
         }
     }
 }
+

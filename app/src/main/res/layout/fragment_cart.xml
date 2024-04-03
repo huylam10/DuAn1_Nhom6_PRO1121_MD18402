@@ -6,7 +6,11 @@
     android:orientation="vertical"
     android:background="#E7E2E2"
     android:layout_height="match_parent"
+
+    tools:context=".FRAGMENT.CartFragment">
+
     tools:context=".Fragment.CartFragment">
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Cart_list"
@@ -48,5 +52,6 @@
             android:textColor="@color/white" />
 
     </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

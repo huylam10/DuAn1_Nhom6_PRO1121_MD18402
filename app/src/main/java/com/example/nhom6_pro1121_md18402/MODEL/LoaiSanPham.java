@@ -85,6 +85,7 @@ public class LoaiSanPham implements Serializable {
     public void setStatusLoaisanpham(int statusLoaisanpham) {
         this.statusLoaisanpham = statusLoaisanpham;
     }
+
     @Override
     public String toString() {
         return "LoaiSanPham{" +

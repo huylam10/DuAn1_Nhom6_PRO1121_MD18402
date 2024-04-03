@@ -3,7 +3,11 @@ package com.example.nhom6_pro1121_md18402.MODEL;
 import java.io.Serializable;
 
 public class SanPham implements Serializable {
+
+    int id , maLoaiSanPham;
+
     int id ;
+
 
     String nameSanpham;
     String imgSanpham;
@@ -25,6 +29,7 @@ public class SanPham implements Serializable {
         this.createSanpham = createSanpham;
         this.updatedSanpham = updatedSanpham;
         this.statusSanpham = statusSanpham;
+
     }
 
     public SanPham(String nameSanpham, String imgSanpham, int priceSanpham, String loaiSanpham, String createSanpham) {
@@ -98,6 +103,7 @@ public class SanPham implements Serializable {
     public void setStatusSanpham(int statusSanpham) {
         this.statusSanpham = statusSanpham;
     }
+
     @Override
     public String toString() {
         return "SanPham{" +

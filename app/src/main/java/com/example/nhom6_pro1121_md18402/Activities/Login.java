@@ -3,6 +3,7 @@ package com.example.nhom6_pro1121_md18402.Activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import static com.example.nhom6_pro1121_md18402.MainActivity.account_all;
+import static com.example.nhom6_pro1121_md18402.MainActivity.check_login;
+import static com.example.nhom6_pro1121_md18402.MainActivity.cart_all;
+
+import com.example.nhom6_pro1121_md18402.Admin.AdminActivity;
 import com.example.nhom6_pro1121_md18402.DAO.TaikhoanDAO;
+import com.example.nhom6_pro1121_md18402.MODEL.DatHang;
 import com.example.nhom6_pro1121_md18402.MODEL.TaiKhoan;
 import com.example.nhom6_pro1121_md18402.MODEL.ThongTinNguoiDung;
 import com.example.nhom6_pro1121_md18402.MainActivity;
@@ -76,7 +83,7 @@ public class Login extends AppCompatActivity {
                 } else if (mk.equalsIgnoreCase("")) {
                     textInputPass.setError("Vui lòng nhập mật khẩu");
                 } else if (dao.checkDangNhapkhNVAD(mail, mk) == true) {
-                    intent = new Intent(getApplicationContext(), MainActivity.class);//AdminActivity
+                    intent = new Intent(getApplicationContext(), AdminActivity.class);//AdminActivity
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("tk", dao.getName(mail));
                     intent.putExtra("bundle", bundle);
@@ -102,22 +109,22 @@ public class Login extends AppCompatActivity {
                 showDialogForGot();
             }
         });
-//       skip.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View view) {
-//               sharedPreferences = getSharedPreferences("OKLuon", MODE_PRIVATE);
-//               SharedPreferences.Editor editor = sharedPreferences.edit();
-//                startActivity(new Intent(Login.this, MainActivity.class));
-//                cart_all = new DatHang();
-//                check_login = false;
-//                account_all = new TaiKhoan();
-//               settingFragment = new ThongTinNguoiDung();
-//               Log.e("ZZZZZ", "onClick: " + account_all + "." + check_login);
-//                editor.putString("FullName", settingFragment.getFullname());
-//               editor.putString("Avatar",settingFragment.getAvatarNguoidung());
-//                editor.commit();
-//            }
-//        });
+       skip.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               sharedPreferences = getSharedPreferences("OKLuon", MODE_PRIVATE);
+               SharedPreferences.Editor editor = sharedPreferences.edit();
+                startActivity(new Intent(Login.this, MainActivity.class));
+                cart_all = new DatHang();
+                check_login = false;
+                account_all = new TaiKhoan();
+               settingFragment = new ThongTinNguoiDung();
+               Log.e("ZZZZZ", "onClick: " + account_all + "." + check_login);
+                editor.putString("FullName", settingFragment.getFullname());
+               editor.putString("Avatar",settingFragment.getAvatarNguoidung());
+                editor.commit();
+            }
+        });
     }
 
     private boolean checkTK(String mail, String mk) {
@@ -159,7 +166,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String email = edtEmail.getText().toString();
                 String matkhau = dao.ForgotPassword(email);
-                //Toast.makeText(Login.this, matkhau, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, matkhau, Toast.LENGTH_SHORT).show();
                 if (matkhau.equals("")){
                     edtEmail.setError("Không tìm thấy tài khoản");
                 }else {

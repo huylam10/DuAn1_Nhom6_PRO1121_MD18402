@@ -69,6 +69,9 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:backgroundTintMode="screen"
+
+                        android:padding="20dp"
+
                         android:src="@drawable/add_to_cart_24"
                         app:layout_constraintTop_toBottomOf="@+id/SPDetail_Img" />
                 </LinearLayout>
@@ -91,7 +94,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
                     android:layout_marginRight="10dp"
+
+                    android:text="34,000,000đ"
+
                     android:text="34,000đ"
+
                     android:textColor="#FF5722"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -170,7 +177,11 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+
+                            android:text="Safetyfood Đảm bảo"
+
                             android:text="Shopfood Đảm bảo"
+
                             android:textColor="#009688" />
 
                         <TextView

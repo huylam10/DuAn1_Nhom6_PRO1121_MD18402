@@ -2,10 +2,12 @@ package com.example.nhom6_pro1121_md18402.MODEL;
 
 public class Top {
     int ProductId,sum;
+
     public Top(int productId, int sum) {
         ProductId = productId;
         this.sum = sum;
     }
+
     public Top() {
     }
 

@@ -57,6 +57,7 @@ public class ChiTietDatHang {
     public void setAmount(float amount) {
         this.amount = amount;
     }
+
     @Override
     public String toString() {
         return "ChiTietDatHang{" +
