@@ -13,16 +13,16 @@ import java.util.List;
 
 public class VaitroDAO {
     SQLiteDatabase db;
-    Dbhelper safetyFoodDataBase;
+    Dbhelper dbhelper;
 
     public VaitroDAO(Context context) {
-        safetyFoodDataBase = new Dbhelper(context);
-        db = safetyFoodDataBase.getWritableDatabase();
+        dbhelper = new Dbhelper(context);
+        db = dbhelper.getWritableDatabase();
     }
 
     public List<VaiTro> getAllVaitro(String sql, String... select) {
         List<VaiTro> list = new ArrayList<>();
-        db = safetyFoodDataBase.getReadableDatabase();
+        db = dbhelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, select);
         cursor.moveToFirst();
         while (cursor.isAfterLast() == false) {
@@ -50,7 +50,7 @@ public class VaitroDAO {
     }
 
     public boolean insertVaitro(VaiTro vaiTro) {
-        db = safetyFoodDataBase.getWritableDatabase();
+        db = dbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Name", vaiTro.getNameVaitro());
         values.put("Description", vaiTro.getDeschiptionVaitro());
@@ -61,7 +61,7 @@ public class VaitroDAO {
     }
 
     public boolean updateVaitro(VaiTro vaiTro) {
-        db = safetyFoodDataBase.getWritableDatabase();
+        db = dbhelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Id", vaiTro.getId());
         values.put("Name", vaiTro.getNameVaitro());
@@ -73,7 +73,7 @@ public class VaitroDAO {
     }
 
     public boolean deleteVaitro(String id) {
-        db = safetyFoodDataBase.getWritableDatabase();
+        db = dbhelper.getWritableDatabase();
         int row = db.delete("VaiTro", "Id=?", new String[]{id});
         return row > 0;
     }

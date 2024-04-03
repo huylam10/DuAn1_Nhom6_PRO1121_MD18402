@@ -1,6 +1,7 @@
 package com.example.nhom6_pro1121_md18402.Adapter;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import static com.example.nhom6_pro1121_md18402.MainActivity.account_all;
 
 import android.content.Context;
@@ -22,7 +23,6 @@ import androidx.cardview.widget.CardView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.example.nhom6_pro1121_md18402.Activities.SanPhamDetail;
 import com.example.nhom6_pro1121_md18402.DAO.ChiTietDatHangDAO;
 import com.example.nhom6_pro1121_md18402.DAO.SanPhamDAO;
@@ -42,6 +42,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartAdapterHol
     int type;
 
     public CartAdapter(List<ChiTietDatHang> list, Context context, ChiTietDatHangDAO chiTietDatHangDAO, int type) {
+
+    public CartAdapter(List<ChiTietDatHang> list, Context context, ChiTietDatHangDAO chiTietDatHangDAO,int type) {
+
         this.list = list;
         this.context = context;
         sanPhamDAO = new SanPhamDAO(context);

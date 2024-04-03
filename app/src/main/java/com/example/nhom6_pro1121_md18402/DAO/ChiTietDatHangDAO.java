@@ -1,6 +1,8 @@
 package com.example.nhom6_pro1121_md18402.DAO;
 
+
 import android.annotation.SuppressLint;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,12 +17,21 @@ import java.util.List;
 
 public class ChiTietDatHangDAO {
 
+
     private SQLiteDatabase db;
     Dbhelper dataBase;
 
     public ChiTietDatHangDAO(Context context) {
         dataBase = new Dbhelper(context);
         db = dataBase.getReadableDatabase();
+
+    private SQLiteDatabase db;
+    Dbhelper dbhelper;
+
+    public ChiTietDatHangDAO(Context context) {
+        dbhelper = new Dbhelper(context);
+        db = dbhelper.getReadableDatabase();
+
     }
 
     public ArrayList<ChiTietDatHang> getDSChiTietDatHang() {
@@ -113,6 +124,7 @@ public class ChiTietDatHangDAO {
     }
 
     @SuppressLint("Range")
+
     public int getSum(int idDatHang) {
         String sql = "SELECT SUM(Amount) AS sum from ChiTietDatHang WHERE OrderId =?";
         Cursor cursor = db.rawQuery(sql, new String[]{String.valueOf(idDatHang)});
@@ -122,3 +134,4 @@ public class ChiTietDatHangDAO {
         return cursor.getInt(0);
     }
 }
+

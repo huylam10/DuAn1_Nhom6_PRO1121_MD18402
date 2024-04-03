@@ -6,4 +6,5 @@
         android:icon="@drawable/shopping_cart_24"
         app:showAsAction="always"
         app:actionLayout="@layout/badge_in_cart_action"/>
+
 </menu>

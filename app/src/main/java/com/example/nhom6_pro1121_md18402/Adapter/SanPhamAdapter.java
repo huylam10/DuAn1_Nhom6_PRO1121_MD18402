@@ -91,4 +91,3 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.SanPhamA
     }
 }
 
-// type = 0 : Dành riêng cho Grid layout manager

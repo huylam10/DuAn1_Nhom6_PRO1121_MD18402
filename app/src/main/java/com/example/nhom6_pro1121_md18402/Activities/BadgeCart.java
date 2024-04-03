@@ -3,6 +3,7 @@ package com.example.nhom6_pro1121_md18402.Activities;
 import static com.example.nhom6_pro1121_md18402.MainActivity.cart_all;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -15,8 +16,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+
 import android.view.Menu;
 import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,7 +58,6 @@ public class BadgeCart extends AppCompatActivity {
         Cart_Dat_Hang.setOnClickListener(v -> {
             MuaHang();
         });
-
     }
 
     private void MuaHang() {
@@ -64,7 +66,9 @@ public class BadgeCart extends AppCompatActivity {
             cart_all.setStatusDathang(1);
             datHangDAO.UpgradeDH(cart_all);
 
+
             startService(new Intent( this, CheckCartService.class ));
+            startService(new Intent( this,CheckCartService.class ));
             finish();
             Toast.makeText(this, "Mua hàng thành công", Toast.LENGTH_SHORT).show();
 
@@ -77,6 +81,9 @@ public class BadgeCart extends AppCompatActivity {
         for (ChiTietDatHang x : chiTietDatHangList) {
             sum += x.getUnitprice()*x.getAmount();
         }
+
+
+
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
         Cart_TotalPrice.setText("Tổng thanh toán : " + decimalFormat.format(sum) + "đ");

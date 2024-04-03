@@ -3,7 +3,11 @@ package com.example.nhom6_pro1121_md18402.MODEL;
 import java.io.Serializable;
 
 public class SanPham implements Serializable {
+
     int id , maLoaiSanPham;
+
+    int id ;
+
 
     String nameSanpham;
     String imgSanpham;

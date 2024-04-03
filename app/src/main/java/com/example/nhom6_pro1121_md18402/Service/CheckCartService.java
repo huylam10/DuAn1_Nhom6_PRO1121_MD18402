@@ -1,5 +1,9 @@
 package com.example.nhom6_pro1121_md18402.Service;
 
+
+=======
+import static android.app.Service.START_NOT_STICKY;
+
 import static com.example.nhom6_pro1121_md18402.MainActivity.account_all;
 
 import android.annotation.SuppressLint;

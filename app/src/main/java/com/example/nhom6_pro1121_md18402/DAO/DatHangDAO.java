@@ -1,6 +1,8 @@
 package com.example.nhom6_pro1121_md18402.DAO;
 
+
 import android.annotation.SuppressLint;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -14,7 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatHangDAO {
+
     Dbhelper dataBase;
+
+    Dbhelper dbhelper;
+
     SQLiteDatabase db;
 
     public static String TagZZZ = "ZZZZZZ";
@@ -28,8 +34,13 @@ public class DatHangDAO {
     String Status = "Status";
 
     public DatHangDAO(Context context) {
+
         dataBase = new Dbhelper(context);
         db = dataBase.getReadableDatabase();
+
+        dbhelper = new Dbhelper(context);
+        db = dbhelper.getReadableDatabase();
+
     }
 
     public void InsertDH(DatHang datHang) {
@@ -98,7 +109,10 @@ public class DatHangDAO {
         return getData(sql, new String[]{String.valueOf(ID), String.valueOf(status3),String.valueOf(status4)});
     }
 
+
     @SuppressLint("Range")
+
+
     public List<DatHang> getData(String sql, String... selectionArgs) {
         List<DatHang> list = new ArrayList<>();
 
@@ -120,6 +134,7 @@ public class DatHangDAO {
         return list;
     }
 
+
 //    Trạng thái của status :
 //    0: Đang đặt hàng
 //    1: Đã đặt hàng đang chờ xử lý
@@ -127,5 +142,6 @@ public class DatHangDAO {
 //    3: Hủy từ phía người dùng
 //    4: Hủy từ phía cửa hàng
 //    5: Giao hàng thành công
+
 
 }
