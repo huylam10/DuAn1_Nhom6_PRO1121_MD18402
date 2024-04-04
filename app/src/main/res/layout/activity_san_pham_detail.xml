@@ -94,11 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="30dp"
                     android:layout_marginRight="10dp"
-
-                    android:text="34,000,000đ"
-
                     android:text="34,000đ"
-
                     android:textColor="#FF5722"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -177,11 +173,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-
-                            android:text="Safetyfood Đảm bảo"
-
                             android:text="Shopfood Đảm bảo"
-
                             android:textColor="#009688" />
 
                         <TextView
@@ -228,9 +220,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-
-
-
 
 </LinearLayout>

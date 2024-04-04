@@ -93,8 +93,6 @@ public class Login extends AppCompatActivity {
                     textInputName.setError("Tài khoản hoặc mật khẩu sai");
                     textInputPass.setError("Tài khoản hoặc mật khẩu sai");
                 }
-
-
             }
         });
         signUp.setOnClickListener(new View.OnClickListener() {

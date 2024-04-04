@@ -6,9 +6,6 @@ public class SanPham implements Serializable {
 
     int id , maLoaiSanPham;
 
-    int id ;
-
-
     String nameSanpham;
     String imgSanpham;
     int priceSanpham;

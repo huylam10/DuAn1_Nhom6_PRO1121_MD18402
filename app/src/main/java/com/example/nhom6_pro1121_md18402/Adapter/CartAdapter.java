@@ -42,9 +42,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartAdapterHol
     int type;
 
     public CartAdapter(List<ChiTietDatHang> list, Context context, ChiTietDatHangDAO chiTietDatHangDAO, int type) {
-
-    public CartAdapter(List<ChiTietDatHang> list, Context context, ChiTietDatHangDAO chiTietDatHangDAO,int type) {
-
         this.list = list;
         this.context = context;
         sanPhamDAO = new SanPhamDAO(context);

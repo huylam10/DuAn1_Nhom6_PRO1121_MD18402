@@ -10,7 +10,6 @@
     <item android:title="Order"
         android:id="@+id/order"
         android:icon="@drawable/icon_order_selected"/>
-
     <item android:title="Setting"
         android:icon="@drawable/icon_setting_selected"
         android:id="@+id/setting"/>

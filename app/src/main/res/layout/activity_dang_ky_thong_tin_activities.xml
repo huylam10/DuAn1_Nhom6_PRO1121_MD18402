@@ -33,8 +33,7 @@
         android:layout_marginTop="50dp"
         android:hint="Họ và tên"
         app:startIconDrawable="@drawable/name_24"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+>
         <EditText
             android:id="@+id/edtHoten"
             android:layout_width="match_parent"
@@ -48,8 +47,7 @@
         android:layout_marginTop="10dp"
         android:hint="Email"
         app:startIconDrawable="@drawable/ic_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+>
         <EditText
             android:id="@+id/edtEmail"
             android:layout_width="match_parent"
@@ -65,8 +63,7 @@
         android:layout_marginTop="10dp"
         android:hint="Số điện thoại"
         app:startIconDrawable="@drawable/circle_phone_24"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+>
         <EditText
             android:id="@+id/edtSdt"
             android:layout_width="match_parent"
@@ -81,8 +78,7 @@
         android:layout_marginTop="10dp"
         android:hint="Địa chỉ"
         app:startIconDrawable="@drawable/map_24"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+>
         <EditText
             android:id="@+id/edtDiachi"
             android:layout_width="match_parent"
@@ -97,8 +93,7 @@
         android:layout_marginTop="10dp"
         android:hint="Ngày sinh"
         app:startIconDrawable="@drawable/calendar_24"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
+>
         <EditText
             android:id="@+id/edtNgaysinh"
             android:layout_width="match_parent"
@@ -130,7 +125,7 @@
     </RadioGroup>
 
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/btnDangkythongtin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

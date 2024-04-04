@@ -20,7 +20,7 @@ import com.example.nhom6_pro1121_md18402.R;
 
 import java.util.List;
 
-public class AllLoaiSanPham extends AppCompatActivity {
+public class  AllLoaiSanPham extends AppCompatActivity {
     RecyclerView loaiSP_List;
     SanPhamDAO sanPhamDAO;
     List<SanPham> sanPhamList;

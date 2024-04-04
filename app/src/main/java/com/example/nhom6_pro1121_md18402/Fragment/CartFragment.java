@@ -2,31 +2,11 @@ package com.example.nhom6_pro1121_md18402.Fragment;
 
 import static com.example.nhom6_pro1121_md18402.MainActivity.cart_all;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.nhom6_pro1121_md18402.Adapter.CartAdapter;
-import com.example.nhom6_pro1121_md18402.DAO.ChiTietDatHangDAO;
-import com.example.nhom6_pro1121_md18402.DAO.DatHangDAO;
-import com.example.nhom6_pro1121_md18402.MODEL.ChiTietDatHang;
-import com.example.nhom6_pro1121_md18402.R;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,13 +15,25 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.example.nhom6_pro1121_md18402.Adapter.CartAdapter;
+import com.example.nhom6_pro1121_md18402.DAO.ChiTietDatHangDAO;
+import com.example.nhom6_pro1121_md18402.DAO.DatHangDAO;
+import com.example.nhom6_pro1121_md18402.Fragment.OrderFragment;
+import com.example.nhom6_pro1121_md18402.MODEL.ChiTietDatHang;
+import com.example.nhom6_pro1121_md18402.R;
 import com.example.nhom6_pro1121_md18402.Service.CheckCartService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class CartFragment extends Fragment {
 
@@ -53,7 +45,6 @@ public class CartFragment extends Fragment {
     List<ChiTietDatHang> chiTietDatHangList;
     Button Cart_Dat_Hang;
     int totalPrice = 0;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

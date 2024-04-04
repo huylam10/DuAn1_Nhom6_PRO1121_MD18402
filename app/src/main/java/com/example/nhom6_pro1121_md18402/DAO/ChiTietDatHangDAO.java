@@ -1,6 +1,5 @@
 package com.example.nhom6_pro1121_md18402.DAO;
 
-
 import android.annotation.SuppressLint;
 
 import android.content.ContentValues;
@@ -17,21 +16,12 @@ import java.util.List;
 
 public class ChiTietDatHangDAO {
 
-
     private SQLiteDatabase db;
     Dbhelper dataBase;
 
     public ChiTietDatHangDAO(Context context) {
         dataBase = new Dbhelper(context);
         db = dataBase.getReadableDatabase();
-
-    private SQLiteDatabase db;
-    Dbhelper dbhelper;
-
-    public ChiTietDatHangDAO(Context context) {
-        dbhelper = new Dbhelper(context);
-        db = dbhelper.getReadableDatabase();
-
     }
 
     public ArrayList<ChiTietDatHang> getDSChiTietDatHang() {
