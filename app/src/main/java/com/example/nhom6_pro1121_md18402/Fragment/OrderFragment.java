@@ -1,26 +1,27 @@
 package com.example.nhom6_pro1121_md18402.Fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.nhom6_pro1121_md18402.Adapter.ViewPager2Adapter;
 import com.example.nhom6_pro1121_md18402.R;
-
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+
 public class OrderFragment extends Fragment {
+
     View view;
     TabLayout Order_Tab;
     ViewPager2 Order_ViewPager2;
     ViewPager2Adapter adapter;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

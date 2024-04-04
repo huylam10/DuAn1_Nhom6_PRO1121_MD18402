@@ -24,8 +24,7 @@
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/user_24"
         android:hint="Tài khoản"
-        android:id="@+id/ForgotEmail"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        android:id="@+id/ForgotEmail">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_email"

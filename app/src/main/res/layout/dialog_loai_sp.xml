@@ -38,7 +38,7 @@
         android:layout_marginTop="40dp"
         android:hint="Tên loại sản phẩm"
         android:id="@+id/Login_Til_Name"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+       >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_ten_loai_sp"
