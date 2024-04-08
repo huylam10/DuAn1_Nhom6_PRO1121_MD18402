@@ -47,14 +47,13 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
     @Override
     public void onBindViewHolder(@NonNull OrderHistoryAdapterHolder holder, int position) {
         DatHang datHang = list.get(position);
-        Log.e("ZZZZ", "onBindViewHolder: "+datHang.getIdtaikhoan() );
         ThongTinNguoiDung info = thongTinNguoiDungDAO.getInfo(datHang.getIdtaikhoan());
         Log.e("Adapter", "onBindViewHolder: "+datHang );
         String status = "";
         holder.Order_History_items_ID.setText("Mã đơn :"+datHang.getId());
         holder.Order_History_items_Buyer.setText("Khách hàng : "+info.getFullname());
         holder.Order_History_items_Address.setText("Địa chỉ : "+info.getAddresNguoidung());
-        holder.Order_History_items_Amount.setText(chiTietDatHangDAO.getSum(datHang.getId( ))+" sản phẩm");
+        holder.Order_History_items_Amount.setText(chiTietDatHangDAO.getSum(datHang.getId())+" sản phẩm");
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
 
         holder.Order_History_items_TotalPrice.setText(decimalFormat.format(datHang.getTotalpriceDathang()) + " đ");
@@ -63,6 +62,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryAdapte
             Bundle bundle = new Bundle();
             bundle.putSerializable("datHang", datHang);
             intent.putExtra("bundle", bundle);
+//            intent.putExtra("amount", chiTietDatHangDAO.getSum(datHang.getId()));
             context.startActivity(intent);
         });
         switch (datHang.getStatusDathang()){

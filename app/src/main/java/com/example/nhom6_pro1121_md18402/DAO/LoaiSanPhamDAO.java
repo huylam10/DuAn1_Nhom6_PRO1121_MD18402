@@ -105,4 +105,3 @@ public class LoaiSanPhamDAO {
         return getDSLoaiSanPham(sql);
     }
 }
-//aaa

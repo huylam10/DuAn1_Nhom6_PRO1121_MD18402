@@ -36,4 +36,3 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
         return 4;
     }
 }
-//aaa

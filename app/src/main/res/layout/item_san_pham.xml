@@ -46,7 +46,7 @@
         android:textColor="#3F51B5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20/12/2022"
+        android:text="20/03/2024"
         android:id="@+id/txt_ngay_sp"
         android:layout_below="@+id/txt_ten_sp"
         android:layout_alignParentRight="true"

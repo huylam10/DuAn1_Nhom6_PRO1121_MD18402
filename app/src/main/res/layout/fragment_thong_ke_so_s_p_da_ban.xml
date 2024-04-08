@@ -46,7 +46,7 @@
                 android:layout_height="50dp"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:text="01/01/2022"
+                android:text="30/03/2024"
                 android:padding="10dp" />
 
             <TextView
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
                 android:textColor="@color/black"
-                android:text="01/01/2022"
+                android:text="30/03/2024"
                 android:padding="10dp" />
 
             <Button

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -138,7 +139,7 @@ public class OrderDetail extends AppCompatActivity {
     }
 
     private void getData() {
-        List<ChiTietDatHang> list = chiTietDatHangDAO.getListCT(datHang.getId( ));
+        List<ChiTietDatHang> list = chiTietDatHangDAO.getListCT2(datHang.getId());
         setList(list);
     }
 
@@ -151,7 +152,7 @@ public class OrderDetail extends AppCompatActivity {
     }
 
     private void setMoney() {
-        int money = (int) datHang.getTotalpriceDathang( );
+        int money = (int) datHang.getTotalpriceDathang();
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
         Order_Done_TotalPrice.setText("Thành tiền : " + decimalFormat.format(money) + "đ");
     }

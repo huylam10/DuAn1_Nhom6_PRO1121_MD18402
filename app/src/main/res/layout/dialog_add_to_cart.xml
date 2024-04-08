@@ -9,7 +9,7 @@
         android:layout_margin="10dp"
         android:text="Số lượng sản phẩm :"
         android:textSize="24sp"
-        android:textColor="@color/red"
+        android:textColor="#FF5E00"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -64,7 +64,7 @@
             android:layout_margin="10dp"
             android:id="@+id/dialog_atc_ok"
             android:text="Xác nhận"
-            android:backgroundTint="@color/red"
+            android:backgroundTint="#FF5E00"
             android:layout_width="0dp"
             android:layout_weight="6"
             android:layout_height="wrap_content"/>
