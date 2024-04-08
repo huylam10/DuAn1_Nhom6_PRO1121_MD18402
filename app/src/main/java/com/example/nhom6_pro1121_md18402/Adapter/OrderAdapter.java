@@ -1,12 +1,14 @@
 package com.example.nhom6_pro1121_md18402.Adapter;
 
 import static com.example.nhom6_pro1121_md18402.MainActivity.account_all;
+import static com.example.nhom6_pro1121_md18402.MainActivity.cart_all;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +19,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
-
 
 import com.example.nhom6_pro1121_md18402.Activities.OrderDetail;
 import com.example.nhom6_pro1121_md18402.DAO.ChiTietDatHangDAO;
@@ -58,102 +59,106 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderAdapter
 
     @Override
     public void onBindViewHolder(@NonNull OrderAdapterHolder holder, int position) {
-        DatHang datHang = list.get(position);
-
-        ChiTietDatHang chiTietDatHang = chiTietDatHangDAO.getListCT(datHang.getId()).get(0);
-        SanPham sanPham = sanPhamDAO.getID(chiTietDatHang.getProductid());
-        String textStatus = "";
-        int statusDH = datHang.getStatusDathang();
-        Calendar calendar = Calendar.getInstance();
-        @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        holder.Order_items_nameSP.setText(sanPham.getNameSanpham());
-        try{
-            holder.Order_items_Img.setImageResource(Integer.parseInt(sanPham.getImgSanpham()));
-        }catch (Exception e){
-            Uri uri = Uri.parse(sanPham.getImgSanpham());
-            holder.Order_items_Img.setImageURI(uri);
-        }
-        holder.Order_items_Amount.setText("x " + chiTietDatHang.getAmount());
-        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-
-        holder.Order_items_Price.setText(decimalFormat.format(sanPham.getPriceSanpham()) + " đ");
-        holder.Order_items_totalAmount.setText(chiTietDatHangDAO.getSum(datHang.getId()) + " sản phẩm");
-        holder.Order_items_totalPrice.setText("Thành tiền : " + decimalFormat.format(datHang.getTotalpriceDathang())+"đ");
-
-
-        if (chiTietDatHangDAO.getListCT(datHang.getId()).size() > 1) {
-            holder.Order_items_xemThem.setVisibility(View.VISIBLE);
-        }
-        switch (statusDH) {
-            case 1: {
-                textStatus = "Đang chờ xử lý";
-                holder.Order_items_MuaLai.setText("Hủy");
-                holder.btnxacnhandagiahang.setVisibility(View.GONE);
-                break;
+        try {
+            DatHang datHang = list.get(position);
+            ChiTietDatHang chiTietDatHang = chiTietDatHangDAO.getListCT(cart_all.getId()).get(0);
+            Log.e("TAG", "chiTietDatHang: " + chiTietDatHang );
+            SanPham sanPham = sanPhamDAO.getID(chiTietDatHang.getProductid());
+            Log.e("TAG", "sanPham: " + sanPham );
+            String textStatus = "";
+            int statusDH = datHang.getStatusDathang();
+            Calendar calendar = Calendar.getInstance();
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            holder.Order_items_nameSP.setText(sanPham.getNameSanpham());
+            try {
+                holder.Order_items_Img.setImageResource(Integer.parseInt(sanPham.getImgSanpham()));
+            } catch (Exception e) {
+                Uri uri = Uri.parse(sanPham.getImgSanpham());
+                holder.Order_items_Img.setImageURI(uri);
             }
-            case 2: {
-                textStatus = "Đang giao hàng";
-                if (textStatus.equals("Đang giao hàng")) {
+            holder.Order_items_Amount.setText("x " + chiTietDatHang.getAmount());
+            DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+
+            holder.Order_items_Price.setText(decimalFormat.format(sanPham.getPriceSanpham()) + " đ");
+            holder.Order_items_totalAmount.setText(chiTietDatHangDAO.getSum(datHang.getId()) + " sản phẩm");
+            holder.Order_items_totalPrice.setText("Thành tiền : " + decimalFormat.format(datHang.getTotalpriceDathang()) + "đ");
+
+
+            if (chiTietDatHangDAO.getListCT(datHang.getId()).size() > 1) {
+                holder.Order_items_xemThem.setVisibility(View.VISIBLE);
+            }
+            switch (statusDH) {
+                case 1: {
+                    textStatus = "Đang chờ xử lý";
+                    holder.Order_items_MuaLai.setText("Hủy");
+                    holder.btnxacnhandagiahang.setVisibility(View.GONE);
+                    break;
+                }
+                case 2: {
+                    textStatus = "Đang giao hàng";
+                    if (textStatus.equals("Đang giao hàng")) {
+                        holder.Order_items_MuaLai.setVisibility(View.GONE);
+                        holder.btnxacnhandagiahang.setVisibility(View.VISIBLE);
+                    }
+                    break;
+                }
+                case 3: {
+                    textStatus = "Bị hủy từ phía bạn";
+                    holder.btnxacnhandagiahang.setVisibility(View.GONE);
+                    break;
+                }
+                case 4: {
+                    textStatus = "Bị hủy từ phía cửa hàng";
+                    holder.btnxacnhandagiahang.setVisibility(View.GONE);
+                    break;
+                }
+                case 5: {
+                    textStatus = "Giao hàng thành công";
+                    holder.btnxacnhandagiahang.setVisibility(View.GONE);
                     holder.Order_items_MuaLai.setVisibility(View.GONE);
-                    holder.btnxacnhandagiahang.setVisibility(View.VISIBLE);
+                    break;
                 }
-                break;
             }
-            case 3: {
-                textStatus = "Bị hủy từ phía bạn";
-                holder.btnxacnhandagiahang.setVisibility(View.GONE);
-                break;
-            }
-            case 4: {
-                textStatus = "Bị hủy từ phía cửa hàng";
-                holder.btnxacnhandagiahang.setVisibility(View.GONE);
-                break;
-            }
-            case 5: {
-                textStatus = "Giao hàng thành công";
-                holder.btnxacnhandagiahang.setVisibility(View.GONE);
-                holder.Order_items_MuaLai.setVisibility(View.GONE);
-                break;
-            }
-        }
-        holder.Order_items_status.setText(textStatus);
-        holder.Order_items_MuaLai.setOnClickListener(v -> {
-            datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
-            if (statusDH == 1 ){
-                if (account_all.getRole()==3){
-                    datHang.setStatusDathang(3);
-                }else {
-                    datHang.setStatusDathang(4);
+            holder.Order_items_status.setText(textStatus);
+            holder.Order_items_MuaLai.setOnClickListener(v -> {
+                datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
+                if (statusDH == 1) {
+                    if (account_all.getRole() == 3) {
+                        datHang.setStatusDathang(3);
+                    } else {
+                        datHang.setStatusDathang(4);
+                    }
+                    datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
+                    datHangDAO.UpgradeDH(datHang);
+                } else if (statusDH == 3) {
+                    datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
+                    datHang.setStatusDathang(1);
+                    datHangDAO.UpgradeDH(datHang);
                 }
-                datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
-                datHangDAO.UpgradeDH(datHang);
-            }
-            else if (statusDH == 3) {
-                datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
-                datHang.setStatusDathang(1);
-                datHangDAO.UpgradeDH(datHang);
-            }
-            list.remove(holder.getAdapterPosition());
-            notifyItemRemoved(holder.getAdapterPosition());
-        });
+                list.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+            });
 
-        holder.btnxacnhandagiahang.setOnClickListener(v ->{
-            datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
-            if (statusDH == 2) {
+            holder.btnxacnhandagiahang.setOnClickListener(v -> {
                 datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
-                datHang.setStatusDathang(5);
-                datHangDAO.UpgradeDH(datHang);
-            }
-            list.remove(holder.getAdapterPosition());
-            notifyItemRemoved(holder.getAdapterPosition());
-        });
-        holder.Order_items_View.setOnClickListener(v -> {
-            Intent intent = new Intent(context, OrderDetail.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("datHang", datHang);
-            intent.putExtra("bundle", bundle);
-            context.startActivity(intent);
-        });
+                if (statusDH == 2) {
+                    datHang.setUpdateDathang(simpleDateFormat.format(calendar.getTime()));
+                    datHang.setStatusDathang(5);
+                    datHangDAO.UpgradeDH(datHang);
+                }
+                list.remove(holder.getAdapterPosition());
+                notifyItemRemoved(holder.getAdapterPosition());
+            });
+            holder.Order_items_View.setOnClickListener(v -> {
+                Intent intent = new Intent(context, OrderDetail.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("datHang", datHang);
+                intent.putExtra("bundle", bundle);
+                context.startActivity(intent);
+            });
+        }catch (Exception e){
+            Log.e("TAG", "error: " + e.getMessage());
+        }
     }
 
     @Override
@@ -185,3 +190,4 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderAdapter
         }
     }
 }
+//aaa

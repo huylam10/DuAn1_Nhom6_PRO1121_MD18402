@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 
 import com.example.nhom6_pro1121_md18402.Database.Dbhelper;
@@ -14,6 +15,7 @@ import java.util.List;
 
 public class SanPhamDAO {
     Dbhelper dbhelper;
+    private final String TAG = SanPhamDAO.class.getSimpleName();
 
     public SanPhamDAO(Context context) {
         dbhelper = new Dbhelper(context);
@@ -34,10 +36,11 @@ public class SanPhamDAO {
         return list;
     }
     public boolean themSanpham(SanPham sanPham) {
+        Log.e(TAG, "themSanpham: " + sanPham );
         SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Name", sanPham.getNameSanpham());
-        contentValues.put("Image", sanPham.getImgSanpham());
+        contentValues.put("Image", sanPham.getImgSanpham() == null ? "abc" : sanPham.getImgSanpham());
         contentValues.put("Price", sanPham.getPriceSanpham());
         contentValues.put("TypeproDuct", sanPham.getLoaiSanpham());
         contentValues.put("Created", sanPham.getCreateSanpham());
@@ -175,3 +178,4 @@ public class SanPhamDAO {
     }
 
 }
+//aa

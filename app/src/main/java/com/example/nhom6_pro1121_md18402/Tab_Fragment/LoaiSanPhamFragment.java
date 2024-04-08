@@ -82,17 +82,22 @@ public class LoaiSanPhamFragment extends Fragment {
         activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
-                if (result.getResultCode() == RESULT_OK && result.getData()!=null){
-                    Bundle bundle = result.getData().getExtras();
-                    Bitmap bitmap = (Bitmap) bundle.get("data");
-                    if (bitmap != null){
-                        anh_loai.setImageBitmap(bitmap);
-                        anh_loai.setVisibility(View.VISIBLE);
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    Uri selectedImageUri = result.getData().getData();
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), selectedImageUri);
+                        if (bitmap != null) {
+                            anh_loai.setImageBitmap(bitmap);
+                            anh_loai.setVisibility(View.VISIBLE);
+                        }
+                        link = selectedImageUri.toString();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    link = String.valueOf(getImageUri(getContext(),bitmap));
                 }
             }
         });
+
         return view;
     }
 
@@ -118,7 +123,8 @@ public class LoaiSanPhamFragment extends Fragment {
         add_anh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openImgea();
+//                openImgea();
+                openImageGallery();
             }
         });
 
@@ -162,4 +168,13 @@ public class LoaiSanPhamFragment extends Fragment {
             Toast.makeText(getContext(), "app ko ho tro action", Toast.LENGTH_SHORT).show();
         }
     }
+    private void openImageGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            activityResultLauncher.launch(intent);
+        } else {
+            Toast.makeText(getContext(), "Không có ứng dụng hỗ trợ", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.example.nhom6_pro1121_md18402.Fragment;
+package com.example.nhom6_pro1121_md18402.FRAGMENT;
 
 import android.content.Context;
 import android.content.Intent;

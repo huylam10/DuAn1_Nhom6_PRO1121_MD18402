@@ -15,13 +15,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.nhom6_pro1121_md18402.DAO.DatHangDAO;
 import com.example.nhom6_pro1121_md18402.DAO.ThongTinNguoiDungDAO;
-import com.example.nhom6_pro1121_md18402.Fragment.CartFragment;
+import com.example.nhom6_pro1121_md18402.FRAGMENT.CartFragment;
 import com.example.nhom6_pro1121_md18402.MODEL.DatHang;
 import com.example.nhom6_pro1121_md18402.MODEL.TaiKhoan;
 
-import com.example.nhom6_pro1121_md18402.Fragment.HomeFragment;
-import com.example.nhom6_pro1121_md18402.Fragment.OrderFragment;
-import com.example.nhom6_pro1121_md18402.Fragment.SettingFragment;
+import com.example.nhom6_pro1121_md18402.FRAGMENT.HomeFragment;
+import com.example.nhom6_pro1121_md18402.FRAGMENT.OrderFragment;
+import com.example.nhom6_pro1121_md18402.FRAGMENT.SettingFragment;
 
 import com.example.nhom6_pro1121_md18402.Service.CheckCartService;
 

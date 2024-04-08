@@ -1,4 +1,4 @@
-package com.example.nhom6_pro1121_md18402.Fragment;
+package com.example.nhom6_pro1121_md18402.FRAGMENT;
 
 import static android.app.Activity.RESULT_OK;
 import static com.example.nhom6_pro1121_md18402.MainActivity.account_all;
@@ -99,7 +99,7 @@ public class SettingFragment extends Fragment {
         });
 //Thong Tin Chi Tiet
         txtThongtinchitiet.setOnClickListener(v -> {
-            replaceFragment(new ThongTinFragment( ));
+            replaceFragment(new com.example.nhom6_pro1121_md18402.FRAGMENT.ThongTinFragment( ));
         });
 //Doi Mat Khau
         ThayDoiMk.setOnClickListener(new View.OnClickListener( ) {

@@ -1,5 +1,6 @@
-package com.example.nhom6_pro1121_md18402.Fragment;
+package com.example.nhom6_pro1121_md18402.FRAGMENT;
 
+import static com.example.nhom6_pro1121_md18402.MainActivity.account_all;
 import static com.example.nhom6_pro1121_md18402.MainActivity.cart_all;
 
 import android.content.BroadcastReceiver;
@@ -7,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -25,12 +27,14 @@ import com.example.nhom6_pro1121_md18402.Adapter.CartAdapter;
 import com.example.nhom6_pro1121_md18402.DAO.ChiTietDatHangDAO;
 import com.example.nhom6_pro1121_md18402.DAO.DatHangDAO;
 import com.example.nhom6_pro1121_md18402.MODEL.ChiTietDatHang;
+import com.example.nhom6_pro1121_md18402.MODEL.DatHang;
 import com.example.nhom6_pro1121_md18402.R;
 import com.example.nhom6_pro1121_md18402.Service.CheckCartService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -64,12 +68,20 @@ public class CartFragment extends Fragment {
 
     private void MuaHang() {
         if (!chiTietDatHangList.isEmpty()) {
-            cart_all.setTotalpriceDathang(totalPrice);
-            cart_all.setStatusDathang(1);
-            datHangDAO.UpgradeDH(cart_all);
+//            cart_all.setTotalpriceDathang(totalPrice);
+//            cart_all.setStatusDathang(1);
+            DatHang datHang = new DatHang();
+            datHang.setId(chiTietDatHangList.get(0).getId());
+            datHang.setIdtaikhoan(account_all.getId());
+            datHang.setCreateDathang(new Date().toString());
+            datHang.setStatusDathang(1);
+            datHang.setTotalpriceDathang(totalPrice);
+            datHang.setUpdateDathang("Chờ xử lý");
+            datHangDAO.InsertDH(datHang);
+
 
             getContext().startService(new Intent(getContext(), CheckCartService.class));
-            replaceFragment(new OrderFragment());
+            replaceFragment(new com.example.nhom6_pro1121_md18402.FRAGMENT.OrderFragment());
         }
     }
 
@@ -85,6 +97,7 @@ public class CartFragment extends Fragment {
     }
 
     private void setAdapterToRCL() {
+        Log.e("TAG", "setAdapterToRCL: " + chiTietDatHangList );
         CartAdapter cartAdapter = new CartAdapter(chiTietDatHangList, getContext(), chiTietDatHangDAO, 1);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         Cart_list.setLayoutManager(linearLayoutManager);

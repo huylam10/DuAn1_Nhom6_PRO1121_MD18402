@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.nhom6_pro1121_md18402.Database.Dbhelper;
 import com.example.nhom6_pro1121_md18402.MODEL.LoaiSanPham;
@@ -11,7 +12,7 @@ import com.example.nhom6_pro1121_md18402.MODEL.LoaiSanPham;
 import java.util.ArrayList;
 
 public class LoaiSanPhamDAO {
-
+    private final String TAG = LoaiSanPhamDAO.class.getSimpleName();
     Dbhelper dbhelper;
 
     public LoaiSanPhamDAO(Context context) {
@@ -57,11 +58,12 @@ public class LoaiSanPhamDAO {
         return list;
     }
     public boolean themLoaiSanPham(LoaiSanPham loaiSanPham) {
+        Log.e(TAG, "themLoaiSanPham: " + loaiSanPham );
         SQLiteDatabase sqLiteDatabase = dbhelper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("Idcuahang", loaiSanPham.getIdCuahang());
         contentValues.put("Name", loaiSanPham.getNameLoaisanpham());
-        contentValues.put("Image", loaiSanPham.getImgLoaisanpham());
+        contentValues.put("Image", loaiSanPham.getImgLoaisanpham() == null ? "abc" : loaiSanPham.getImgLoaisanpham());
         contentValues.put("Created", loaiSanPham.getCreateLoaisanpham());
         contentValues.put("Updated", loaiSanPham.getUpdatedLoaisanpham());
         contentValues.put("Status", loaiSanPham.getStatusLoaisanpham());
@@ -103,3 +105,4 @@ public class LoaiSanPhamDAO {
         return getDSLoaiSanPham(sql);
     }
 }
+//aaa

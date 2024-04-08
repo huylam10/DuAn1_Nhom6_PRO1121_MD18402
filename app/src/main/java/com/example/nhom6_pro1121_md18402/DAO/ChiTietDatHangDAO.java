@@ -69,6 +69,13 @@ public class ChiTietDatHangDAO {
         return 1;
     }
 
+    public int XoaChiTietDatHang2(int id) {
+        long check = db.delete("ChiTietDatHang", "Id = ?", new String[]{String.valueOf(id)});
+        if (check == -1)
+            return 0;
+        return 1;
+    }
+
     public List<ChiTietDatHang> getListCT(int idDatHang) {
         List<ChiTietDatHang> list = new ArrayList<>();
         String sql = "select * from ChiTietDatHang where OrderId =?";
@@ -125,3 +132,4 @@ public class ChiTietDatHangDAO {
     }
 }
 
+//aaa

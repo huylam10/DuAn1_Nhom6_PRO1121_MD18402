@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="25/11/2022"
+        android:text="25/03/2024"
         android:layout_marginTop="20dp"
         android:layout_toRightOf="@+id/txt_anh_loai_sp"
         android:layout_below="@+id/txt_ten_loai"

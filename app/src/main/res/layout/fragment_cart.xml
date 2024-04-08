@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="#E7E2E2"
     android:layout_height="match_parent"
-    tools:context=".Fragment.CartFragment">
+    tools:context=".FRAGMENT.CartFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -91,13 +91,17 @@ public class SanPhamFragment extends Fragment {
             @Override
             public void onActivityResult(ActivityResult result) {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                    Bundle bundle = result.getData().getExtras();
-                    Bitmap bitmap = (Bitmap) bundle.get("data");
-                    if (bitmap != null) {
-                        anh.setImageBitmap(bitmap);
-                        anh.setVisibility(View.VISIBLE);
+                    Uri selectedImageUri = result.getData().getData();
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContext().getContentResolver(), selectedImageUri);
+                        if (bitmap != null) {
+                            anh.setImageBitmap(bitmap);
+                            anh.setVisibility(View.VISIBLE);
+                        }
+                        link = selectedImageUri.toString();
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    link = String.valueOf(getImageUri(getContext(), bitmap));
                 }
             }
         });
@@ -138,7 +142,8 @@ public class SanPhamFragment extends Fragment {
         them_anh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openImage();
+//                openImage();
+                openImageGallery();
             }
         });
         list_loai_sp = phamDAO.getDSLoaiSanPham();
@@ -224,6 +229,14 @@ public class SanPhamFragment extends Fragment {
             activityResultLauncher.launch(intent);
         } else {
             Toast.makeText(getContext(), "app ko ho tro action", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void openImageGallery() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            activityResultLauncher.launch(intent);
+        } else {
+            Toast.makeText(getContext(), "Không có ứng dụng hỗ trợ", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -5,12 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#E7E2E2"
-    tools:context=".Fragment.OrderFragment">
+    tools:context=".FRAGMENT.OrderFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/Order_Tab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/Order_ViewPager2"

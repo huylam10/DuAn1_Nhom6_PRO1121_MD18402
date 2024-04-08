@@ -60,6 +60,7 @@ public class DatHangDAO {
     }
 
     public void UpgradeDH(DatHang datHang) {
+        Log.e("TAG", "UpgradeDH: " + datHang );
         ContentValues values = new ContentValues();
         values.put(AccountId, datHang.getIdtaikhoan());
         values.put(TotalPrice, datHang.getTotalpriceDathang());
@@ -145,3 +146,4 @@ public class DatHangDAO {
 
 
 }
+///aaa
