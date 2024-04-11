@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 
 import com.example.nhom6_pro1121_md18402.MainActivity;
 import com.example.nhom6_pro1121_md18402.R;
@@ -16,17 +17,13 @@ public class Intro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
-        CountDownTimer countDownTimer = new CountDownTimer(3000, 3000) {
-            @Override
-            public void onTick(long l) {
-
-            }
-
-            @Override
-            public void onFinish() {
-                startActivity(new Intent(getApplicationContext(), Login.class));
-            }
-        };
-        countDownTimer.start();
+       new Handler().postDelayed(new Runnable() {
+           @Override
+           public void run() {
+               Intent inten = new Intent(Intro.this, Login.class);
+               startActivity(inten);
+               finish();
+           }
+       },3000);
     }
 }

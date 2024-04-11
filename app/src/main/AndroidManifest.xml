@@ -37,7 +37,7 @@
             android:name=".Activities.SearchItems"
             android:exported="false" />
         <activity
-            android:name=".Activities.Intro"
+            android:name=".Activities.Login"
             android:exported="false" />
         <activity
             android:name=".Activities.AllLoaiSanPham"
@@ -55,7 +55,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.Login"
+            android:name=".Activities.Intro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
