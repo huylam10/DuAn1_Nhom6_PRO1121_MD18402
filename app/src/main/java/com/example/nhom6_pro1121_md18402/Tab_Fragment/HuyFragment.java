@@ -22,7 +22,6 @@ import java.util.List;
 
 public class HuyFragment extends Fragment {
 
-
     View view;
     RecyclerView Order_list;
     List<DatHang> list;
